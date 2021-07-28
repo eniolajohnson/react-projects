@@ -6,12 +6,12 @@ function App() {
   const handleClick = () => {
     setPeople([]);
   }
-  return <div>
+  return <main>
     <h3>{people.length} people have their  birthdays today</h3>
     <List people={people}/>
     <button onClick={handleClick}>
       clear all</button>
-  </div>;
+  </main>;
 }
 
 export default App;
