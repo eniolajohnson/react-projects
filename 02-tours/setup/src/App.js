@@ -26,6 +26,10 @@ function App() {
     setTours(newToursArr);
   }
 
+  const handleSeeAllTours = () => {
+    fetchTours();
+  }
+
   useEffect(() => {
     fetchTours();
   }, []);
@@ -36,9 +40,14 @@ function App() {
       ? <div>
         <Loading />
       </div> 
-      : <main>
-        <Tours tours={tours} deleteTour={deleteTour}/>
-      </main>
+      : (tours.length === 0)
+        ? <div className="title">
+          <h2>no tours left</h2>
+          <button className='btn' onClick={handleSeeAllTours}>See all available tours</button>
+        </div>
+        : <main>
+          <Tours tours={tours} deleteTour={deleteTour}/>
+        </main>
       }
     </>
   )
