@@ -1,7 +1,12 @@
 import React from 'react';
 import Tour from './Tour';
-const Tours = () => {
-  return <h2>tours component</h2>;
+
+const Tours = ({ tours }) => {
+  return (
+    <div>
+      <Tour tours={tours} />
+    </div>
+  );
 };
 
 export default Tours;

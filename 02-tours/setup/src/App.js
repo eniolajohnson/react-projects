@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import Loading from './Loading'
 import Tours from './Tours'
-// ATTENTION!!!!!!!!!!
-// I SWITCHED TO PERMANENT DOMAIN
-const url = 'https://course-api.com/react-tours-project'
+
+const url = 'https://course-api.com/react-tours-project';
+
 function App() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [tours, setTours] = useState([]);
 
   const fetchTours = async () => {
@@ -15,8 +15,9 @@ function App() {
       const tours = await res.json();
       setLoading(false);
       setTours(tours);
-    } catch(error){
-      console.error(error.message)
+    } catch (error) {
+      setLoading(false);
+      console.log(error.message);
     }
   }
 
@@ -27,13 +28,12 @@ function App() {
   return (
     <>
       { loading 
-      ? <main>
+      ? <div>
         <Loading />
-      </main> 
-      : 
-      <div>
-        
-      </div>
+      </div> 
+      : <main>
+        <Tours tours={tours} />
+      </main>
       }
     </>
   )
