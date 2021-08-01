@@ -17,8 +17,13 @@ function App() {
       setTours(tours);
     } catch (error) {
       setLoading(false);
-      console.log(error.message);
+      console.log(error);
     }
+  }
+
+  const deleteTour = (id) => {
+    const newToursArr = tours.filter((tour) => tour.id !== id);
+    setTours(newToursArr);
   }
 
   useEffect(() => {
@@ -32,7 +37,7 @@ function App() {
         <Loading />
       </div> 
       : <main>
-        <Tours tours={tours} />
+        <Tours tours={tours} deleteTour={deleteTour}/>
       </main>
       }
     </>

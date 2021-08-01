@@ -1,18 +1,33 @@
 import React, { useState } from 'react';
 
-const Tour = ({ tours }) => {
+const Tour = ({ id, name, image, info, price , deleteTour }) => {
+  const [seeMore, setSeeMore] = useState(false);
+
+  const handleSeeMore = () => {
+    return setSeeMore(!seeMore);
+  }
+
   return (
-    <div>
-      {tours.map(tour => {
-      const {id, name, info, image, price} = tour;
-      return <div key={id}>
-        <h2>{name}</h2>
-        <img src={image} alt={name} />
-        <p>{`Description: ${info}`}</p>
-        <p>{`Price: ${price}`}</p>
-      </div>
-    })}
-    </div>
+    <article className="single-tour">
+      <img src={image} alt={name} />
+      <footer>
+        <div className="tour-info">
+          <h4>{name}</h4>
+          <h4 className="tour-price">{`Price: $${price}`}</h4>
+        </div>
+        <p>{
+          seeMore
+          ? info
+          : `${info.substring(0, 200)}...`
+          } <button onClick={handleSeeMore}>{
+            seeMore 
+            ? `See less`
+            : `See more`
+          }</button>
+          </p>
+        <button className="delete-btn" onClick={() => {deleteTour(id)}}>not interested</button>
+      </footer>
+    </article>
   )
 };
 
