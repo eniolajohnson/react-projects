@@ -5,20 +5,20 @@ import { FaChevronLeft, FaChevronRight, FaQuoteRight } from 'react-icons/fa';
 const Review = () => {
   const [index, setIndex] = useState(0);
   const { name, id, job, image, text } = people[index];
+  const maxLimit = people.length - 1;
 
   const handlePrev = () => {
     const prevIndex = id - 2;
-    console.log(prevIndex);
     if (prevIndex > -1) {
       setIndex(prevIndex);
     } else {
-      setIndex(3)
+      setIndex(maxLimit)
     }   
   }
 
   const handleNext = () => {
     const nextIndex = id;
-    if (nextIndex < 4) {
+    if (nextIndex < maxLimit) {
       setIndex(nextIndex);
     } else {
       setIndex(0)
