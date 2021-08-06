@@ -8,12 +8,12 @@ const Question = ({ id, info, title }) => {
     setReadMore(!readMore);
   }
   return (
-    <div className="question">
+    <article className="question">
       { 
         readMore 
         ? <div>
           <header>
-            <h3 className='title'>{title}</h3>
+            <h4 className='title'>{title}</h4>
             <button onClick={handleReadMore} className="btn">
               <AiOutlineMinus />
             </button>
@@ -29,7 +29,7 @@ const Question = ({ id, info, title }) => {
           </header>
         </div>
     }
-    </div>
+    </article>
   );
 };
 
