@@ -4,12 +4,33 @@ import { FaQuoteRight } from 'react-icons/fa';
 import data from './data';
 
 function App() {
-  const [ people, setPeople ] = useState(data);
+  const [ people, setPeople ] = useState([]);
   const [index, setIndex] = useState(0);
 
-  useEffect(() => {
+  /* Parameters for the useEffect measures a change in the state values
+  index and people. You can ditch useEffect and deploy this functionality straight 
+  into your onClick handler function. 
+  */
 
-  })
+  useEffect(() => {
+    const lastIndex = people.length - 1;
+    setPeople(data);
+
+    if (index < 0) {
+      setIndex(lastIndex)
+    }
+
+    if (index > lastIndex) {
+      setIndex(0);
+    }
+  }, [index, people]);
+
+  useEffect(() => {
+    let autoSlider = setInterval(() => {
+      setIndex(index + 1);
+    }, 3000);
+    return () => clearInterval(autoSlider);
+  }, [index]);
 
   return (
     <section className="section">
@@ -40,10 +61,16 @@ function App() {
             </article>
           );
         })}
-        <button className="prev">
+        <button className="prev"
+        onClick={() => {
+          setIndex(index - 1 )
+        }}>
           <FiChevronLeft />
         </button>
-        <button className="next">
+        <button className="next"
+        onClick={() => {
+          setIndex(index + 1 )
+        }}>
           <FiChevronRight />
         </button>
       </div>
