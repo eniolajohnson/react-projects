@@ -8,6 +8,14 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     let amount = parseInt(count);
+    if (count <= 0){
+      amount = 1;
+    }
+
+    if (count > 8){
+      amount = text.length - 1;
+    }
+
     setText(data.slice(0, amount));
   }
 
