@@ -14,3 +14,20 @@ const Categories = ({ filterMenu, categories}) => {
 };
 
 export default Categories;
+
+// import React from 'react';
+
+// const Categories = ({ input}) => {
+
+//   return (
+//     <div className="btn-container">
+//       {categories.map((category, index) => {
+//         return <button key={index} className="filter-btn" onClick={() => 
+//           filterMenu(category)}>{category}
+//         </button>
+//       })}
+//     </div>
+//   );
+// };
+
+
