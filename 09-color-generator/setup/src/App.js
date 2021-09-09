@@ -10,7 +10,9 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('works');
+    let isColor = new Values(color).all(10);
+    console.log(isColor)
+    // isColor ? 
   }
   return (
     <>
