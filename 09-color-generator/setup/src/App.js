@@ -22,7 +22,6 @@ function App() {
     <>
     <section className='container'>
       <form onSubmit={handleSubmit}>
-        {/* <label htmlFor="color"></label> */}
         <input type="text" 
           value={color} 
           placeholder='#ffffff'
