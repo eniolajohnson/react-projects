@@ -1,18 +1,22 @@
-import React, { useState } from 'react'
-import SingleColor from './SingleColor'
+import React, { useState } from 'react';
+import SingleColor from './SingleColor';
 
 import Values from 'values.js';
 
 function App() {
   const [color, setColor] = useState('');
-  const [error, setError] = useState('');
+  const [error, setError] = useState(false);
   const [list, setList] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let isColor = new Values(color).all(10);
-    console.log(isColor)
-    // isColor ? 
+    try {
+      let isColor = new Values(color).all(10);
+      setList(isColor);
+    } catch (error) {
+      setError(true)
+      console.log(error)
+    }
   }
   return (
     <>
@@ -27,7 +31,10 @@ function App() {
       </form>
     </section>
     <section className="colors">
-      <h4>list goes here</h4>
+      {list.map((color, index) => {
+        console.log(color)
+        return <SingleColor key={index} {...color} hexColor={color.hex} index={index}/>
+      })}
     </section>
     </>
   )
