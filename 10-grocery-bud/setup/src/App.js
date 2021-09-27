@@ -22,6 +22,11 @@ function App() {
         }
         return item;
       }));
+      setIsEditing(false);
+      setEditId(null);
+      setName('');
+      const msg = "item edited";
+    showAlert(true, 'success', msg);
     } else {
       const msg = "item added to list"
       showAlert(true, 'success', msg);
@@ -48,8 +53,6 @@ function App() {
   }
 
   const editItem = (id) => {
-    const msg = "edited item";
-    showAlert(true, 'success', msg);
     const itemEdit = list.find((item) => item.id === id);
     setIsEditing(true);
     setEditId(id);
