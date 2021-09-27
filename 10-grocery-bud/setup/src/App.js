@@ -16,7 +16,6 @@ function App() {
       showAlert(true, 'danger', msg);
     } else if (name && isEditing){
       setIsEditing(true);
-      // do this
     } else {
       const msg = "item added to list"
       showAlert(true, 'success', msg);
@@ -34,6 +33,12 @@ function App() {
     const msg = "list emptied";
     showAlert(true, "danger", msg)
     setList([]);
+  }
+
+  const removeItem = (id) => {
+    const msg = "removed item"
+    showAlert(true, 'danger', msg);
+    setList(list.filter((item) => item.id !== id))
   }
 
   return (

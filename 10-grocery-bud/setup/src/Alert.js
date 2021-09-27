@@ -11,4 +11,4 @@ const Alert = ({type, msg, removeAlert}) => {
   return <p className={`alert alert-${type}`}>{msg}</p>
 }
 
-export default Alert
+export default Alert;
