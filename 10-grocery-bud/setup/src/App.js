@@ -27,7 +27,7 @@ function App() {
       setList(
         list.map((item) => {
         if (item.id === editId) {
-          return {... item, title: name}
+          return {...item, title: name}
         }
         return item;
       }));
