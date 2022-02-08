@@ -17,7 +17,7 @@ const Navbar = () => {
     }
   }, [showLinks])
 
-  return (
+  return ( 
     <nav>
       <div className="nav-center">
         <div className="nav-header">
@@ -28,7 +28,8 @@ const Navbar = () => {
             <FaBars />
           </button>
         </div>
-        <div className="links-container" ref={linksContainerRef}>
+        {showLinks && (
+          <div className="links-container" ref={linksContainerRef}>
             <ul className="links" ref={linksRef}>
               {links.map((link) => {
                 const {id, url, text} = link;
@@ -40,14 +41,17 @@ const Navbar = () => {
               })}
             </ul>
           </div>
+        )}
         <ul className="social-icons">
           {social.map((socialIcon) => {
             const {id, url, icon} = socialIcon;
-            <li key={id}>
-              <a href={url}>
-                {icon}
-              </a>
-            </li>
+            return (
+              <li key={id}>
+                <a href={url}>
+                  {icon}
+                </a>
+              </li>
+            )
           })}
         </ul>
       </div>
